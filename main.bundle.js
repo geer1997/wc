@@ -270,7 +270,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/administrator-dashboard/administrator-dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section id=\"welcome\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <h2 class=\"text-center text-white\">Bienvenido {{user.firstName}}</h2>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<div class=\"container\">\r\n  <div class=\"row justify-content-around\">\r\n    <div class=\"col-lg-10 fondoBlanco\">\r\n      <ngb-tabset type=\"pills\" justify=\"fill\">\r\n        <ngb-tab title=\"Usuario\">\r\n          <ng-template ngbTabContent>\r\n            <div class=\"row justify-content-around mt-2\">\r\n              <div class=\"col-sm-12 col-lg-12\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 mt-3 text-left\">\r\n                    <h5>Buscar usuarios:</h5>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 col-sm-12\">\r\n                    <select class=\"form-control mt-1 mb-3 form-control-sm\" id=\"busquedaPor\" (change)=\"claveBusqueda($event.target.value)\">\r\n                      <option>Busqueda por cedula</option>\r\n                      <option>Busqueda por nombre</option>\r\n                      <option>Busqueda por usuario</option>\r\n                      <option>Busqueda por correo</option>\r\n                    </select>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-8 col-sm-12\">\r\n                    <form #formUpdate=\"ngForm\">\r\n                      <input class=\"form-control\" id=\"userID\" type=\"text\" placeholder=\"Clave de busqueda...\" [(ngModel)]=\"userIDSearch\" [ngModelOptions]=\"{standalone: true}\">\r\n                    </form>\r\n                  </div>\r\n                  <div class=\"col-lg-4 col-sm-12 text-center\">\r\n                    <button class=\"btn btn-primary m-1\" (click)=\"getUsuarioByID()\">Buscar</button>\r\n                    <button class=\"btn btn-primary m-1\" (click)=\"getUsuario()\">Todos los usuarios</button>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row mt-3\">\r\n                  <div class=\"col-lg-12 text-left\">\r\n                    <h5>Usuarios:</h5>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 col-sm-12\">\r\n                    \r\n                    <table class=\"table table-hover-md table-responsive-md\" data-toggle=\"table\" data-pagination=\"true\">\r\n                      <thead class=\"thead-dark\">\r\n                        <tr>\r\n                          <th>Cédula</th>\r\n                          <th>Nombre</th>\r\n                          <th>Username</th>\r\n                          <th>Correo</th>\r\n                          <th>Tipo de usuario</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                        <tr *ngFor=\"let user of usuarios\" (click)=\"usuarioSelec(user)\">\r\n                          <td>{{user.nationalID}}</td>\r\n                          <td>{{user.firstName}} {{user.lastName}}</td>\r\n                          <td>{{user.username}}</td>\r\n                          <td>{{user.email}}</td>\r\n                          <td>{{user.typeShown}}</td>\r\n                        </tr>\r\n                      </tbody>\r\n                    </table>\r\n                  \r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 mt-3 text-left\">\r\n                    <h4>Registrar/ Modificar Usuario</h4>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-sm-12 col-lg-12\">\r\n                  <form #formUpdate=\"ngForm\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"firstName\">Nombres</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"firstName\" [(ngModel)]=\"firstName\" name=\"firstName\" [ngModelOptions]=\"{standalone: true}\"\r\n                          placeholder=\"Rafael\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"lastName\">Apellidos</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"lastName\" [(ngModel)]=\"lastName\" [ngModelOptions]=\"{standalone: true}\" name=\"lastName\"\r\n                          placeholder=\"Matienzo\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"username\">Nombre de Usuario</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"username\" [ngModelOptions]=\"{standalone: true}\"\r\n                          placeholder=\"rmatienzo\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"email\">Correo Electrónico</label>\r\n                        <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"email\" [ngModelOptions]=\"{standalone: true}\" name=\"email\"\r\n                          placeholder=\"rmatienzp@example.com\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"password\">Contraseña</label>\r\n                        <input type=\"password\" class=\"form-control\" id=\"password\" [(ngModel)]=\"password\" name=\"password\" [ngModelOptions]=\"{standalone: true}\"\r\n                          placeholder=\"password\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"password2\">Verificación de Contraseña</label>\r\n                        <input type=\"password\" class=\"form-control\" id=\"password2\" [(ngModel)]=\"password2\" [ngModelOptions]=\"{standalone: true}\"\r\n                          name=\"password2\" placeholder=\"password\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"addressLine1\">Dirección #1</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"addressLine1\" [(ngModel)]=\"addressLine1\" [ngModelOptions]=\"{standalone: true}\"\r\n                          name=\"addressLine1\" placeholder=\"Edif. La Risa Apto. 00\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"addressLine2\">Direcciones #2</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"addressLine2\" [(ngModel)]=\"addressLine2\" [ngModelOptions]=\"{standalone: true}\"\r\n                          name=\"addressLine2\" placeholder=\"Calle 2, El Paraiso\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"city\">Ciudad</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"city\" [(ngModel)]=\"city\" [ngModelOptions]=\"{standalone: true}\" name=\"city\" placeholder=\"Caracas\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"nationalID\">Cédula</label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"nationalID\" [(ngModel)]=\"nationalID\" [ngModelOptions]=\"{standalone: true}\" name=\"nationalID\"\r\n                          placeholder=\"1000\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-12 form-group\">\r\n                        <label for=\"rolAsignado\">Rol</label>\r\n                        <select class=\"form-control\" id=\"rolAsignado\" required (change)=\"onChange($event.target.value)\">\r\n                          <option *ngFor=\"let rol of roles\" [value]=\"rol.type\">{{rol.nombre}}</option>\r\n                        </select>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-lg-12 col-sm-12 text-right\">\r\n                        <button class=\"btn btn-primary m-1\" (click)=\"registrarEmpleado()\" [disabled]=\"canModificateUser\">Registrar</button>\r\n                        <button class=\"btn btn-primary m-1\" (click)=\"modificarUser()\" [disabled]=\"!canModificateUser\">Modificar</button>\r\n                      </div>\r\n                    </div>\r\n                  </form>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ng-template>\r\n        </ngb-tab>\r\n        <ngb-tab title=\"Repuestos\">\r\n          <ng-template ngbTabContent>\r\n            <div class=\"row justify-content-around mt-2\">\r\n              <div class=\"col-sm-12 col-lg-12\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 mt-3 text-left\">\r\n                    <h5>Buscar repuestos:</h5>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-8 col-sm-12\">\r\n                    <form #formUpdate=\"ngForm\">\r\n                      <input class=\"form-control\" id=\"partNumberSearch\" type=\"text\" placeholder=\"Número de parte\" [(ngModel)]=\"partNumberSearch\"\r\n                        [ngModelOptions]=\"{standalone: true}\">\r\n                    </form>\r\n                  </div>\r\n                  <div class=\"col-lg-4 col-sm-12 text-center\">\r\n                    <button class=\"btn btn-primary m-1\" (click)=\"getRepuestosByPartNumber()\">Buscar</button>\r\n                    <button class=\"btn btn-primary m-1\" (click)=\"getRepuesto()\">Todos los repuestos</button>\r\n                  </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 mt-3 text-left\">\r\n                    <h4>Repuestos</h4>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-lg-12 col-sm-12 text-center\">\r\n                    <table class=\"table table-hover table-responsive-md\" data-toggle=\"table\" data-pagination=\"true\">\r\n                      <thead class=\"thead-dark\">\r\n                        <tr>\r\n                          <th>Numero de parte</th>\r\n                          <th>Nombre</th>\r\n                          <th>Marca</th>\r\n                          <th>Modelo</th>\r\n                          <th>Disponibilidad</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                        <tr *ngFor=\"let repuesto of repuestos\" (click)=\"repuestoSelec(repuesto)\">\r\n                          <td>{{repuesto.partNumber}}\r\n                          </td>\r\n                          <td>{{repuesto.name}}\r\n                          </td>\r\n                          <td>{{repuesto.brand}}\r\n                          </td>\r\n                          <td>{{repuesto.forModel}}\r\n                          </td>\r\n                          <td>{{repuesto.inStock}} Unidades</td>\r\n                        </tr>\r\n                      </tbody>\r\n                    </table>\r\n                  </div>\r\n                </div>\r\n                <br>\r\n                <h4 class=\"text-left mt-2\">Añadir Repuesto/ Modificar Repuesto</h4>\r\n                <form #formUpdate=\"ngForm\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                      <label for=\"partNumber\">Numero de parte</label>\r\n                      <input class=\"form-control\" id=\"partNumber\" type=\"text\" placeholder=\"9933885522\" [(ngModel)]=\"partNumber\" [ngModelOptions]=\"{standalone: true}\">\r\n                    </div>\r\n                    <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                      <label for=\"partName\">Nombre</label>\r\n                      <input class=\"form-control\" id=\"partName\" type=\"text\" placeholder=\"Pastillas de freno\" [(ngModel)]=\"name\" [ngModelOptions]=\"{standalone: true}\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                      <label for=\"partBrand\">Marca</label>\r\n                      <input class=\"form-control\" id=\"partBrand\" type=\"text\" placeholder=\"Toyota\" [(ngModel)]=\"brand\" [ngModelOptions]=\"{standalone: true}\">\r\n                    </div>\r\n                    <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                      <label for=\"partModel\">Modelo</label>\r\n                      <input class=\"form-control\" id=\"partModel\" type=\"text\" placeholder=\"Camry\" [(ngModel)]=\"forModel\" [ngModelOptions]=\"{standalone: true}\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                      <label for=\"partQuantity\">Cantidad</label>\r\n                      <input class=\"form-control\" id=\"partQuantity\" type=\"text\" placeholder=\"7\" [(ngModel)]=\"inStock\" [ngModelOptions]=\"{standalone: true}\">\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-sm-12 form-group text-right\">\r\n                      <button class=\"btn btn-primary m-1\" (click)=\"registrarRepuesto(content)\" [disabled]=\"canModificateRep\">Añadir</button>\r\n                      <button class=\"btn btn-primary m-1\" (click)=\"modificarRepuesto()\" [disabled]=\"!canModificateRep\">Modificar</button>\r\n                    </div>\r\n              \r\n                  </div>\r\n                </form>\r\n              </div>\r\n            </div>\r\n          </ng-template>\r\n        </ngb-tab>\r\n      </ngb-tabset>\r\n    </div>\r\n  </div>\r\n</div>\r\n<br>\r\n<br>\r\n<br>\r\n<br>"
+module.exports = "<section id=\"welcome\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <h2 class=\"text-center text-white\">Bienvenido {{user.firstName}}</h2>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  </section>\r\n  <div class=\"container\">\r\n    <div class=\"row justify-content-around\">\r\n      <div class=\"col-lg-10 fondoBlanco\">\r\n        <ngb-tabset type=\"pills\" justify=\"fill\">\r\n          <ngb-tab title=\"Usuario\">\r\n            <ng-template ngbTabContent>\r\n              <div class=\"row justify-content-around mt-2\">\r\n                <div class=\"col-sm-12 col-lg-12\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 mt-3 text-left\">\r\n                      <h5>Buscar usuarios:</h5>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 col-sm-12\">\r\n                      <select class=\"form-control mt-1 mb-3 form-control-sm\" id=\"busquedaPor\" (change)=\"claveBusqueda($event.target.value)\">\r\n                        <option>Busqueda por cedula</option>\r\n                        <option>Busqueda por nombre</option>\r\n                        <option>Busqueda por usuario</option>\r\n                        <option>Busqueda por correo</option>\r\n                      </select>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-8 col-sm-12\">\r\n                      <form #formUpdate=\"ngForm\">\r\n                        <input class=\"form-control\" id=\"userID\" type=\"text\" placeholder=\"Clave de busqueda...\" [(ngModel)]=\"userIDSearch\" [ngModelOptions]=\"{standalone: true}\">\r\n                      </form>\r\n                    </div>\r\n                    <div class=\"col-lg-4 col-sm-12 text-center\">\r\n                      <button class=\"btn btn-primary m-1\" (click)=\"getUsuarioByID()\">Buscar</button>\r\n                      <button class=\"btn btn-primary m-1\" (click)=\"getUsuario()\">Todos los usuarios</button>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row mt-3\">\r\n                    <div class=\"col-lg-12 text-left\">\r\n                      <h5>Usuarios:</h5>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 col-sm-12\">\r\n                      \r\n                      <table class=\"table table-hover-md table-responsive-md\" data-toggle=\"table\" data-pagination=\"true\">\r\n                        <thead class=\"thead-dark\">\r\n                          <tr>\r\n                            <th>Cédula</th>\r\n                            <th>Nombre</th>\r\n                            <th>Username</th>\r\n                            <th>Correo</th>\r\n                            <th>Tipo de usuario</th>\r\n                          </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                          <tr *ngFor=\"let user of usuarios\" (click)=\"usuarioSelec(user)\">\r\n                            <td>{{user.nationalID}}</td>\r\n                            <td>{{user.firstName}} {{user.lastName}}</td>\r\n                            <td>{{user.username}}</td>\r\n                            <td>{{user.email}}</td>\r\n                            <td>{{user.typeShown}}</td>\r\n                          </tr>\r\n                        </tbody>\r\n                      </table>\r\n                    \r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 mt-3 text-left\">\r\n                      <h4>Registrar/ Modificar Usuario</h4>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"col-sm-12 col-lg-12\">\r\n                    <form #formUpdate=\"ngForm\">\r\n                      <div class=\"row\">\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"firstName\">Nombres</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"firstName\" [(ngModel)]=\"firstName\" name=\"firstName\" [ngModelOptions]=\"{standalone: true}\"\r\n                            placeholder=\"Rafael\">\r\n                        </div>\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"lastName\">Apellidos</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"lastName\" [(ngModel)]=\"lastName\" [ngModelOptions]=\"{standalone: true}\" name=\"lastName\"\r\n                            placeholder=\"Matienzo\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"username\">Nombre de Usuario</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"username\" [ngModelOptions]=\"{standalone: true}\"\r\n                            placeholder=\"rmatienzo\">\r\n                        </div>\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"email\">Correo Electrónico</label>\r\n                          <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"email\" [ngModelOptions]=\"{standalone: true}\" name=\"email\"\r\n                            placeholder=\"rmatienzp@example.com\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"password\">Contraseña</label>\r\n                          <input type=\"password\" class=\"form-control\" id=\"password\" [(ngModel)]=\"password\" name=\"password\" [ngModelOptions]=\"{standalone: true}\"\r\n                            placeholder=\"password\">\r\n                        </div>\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"password2\">Verificación de Contraseña</label>\r\n                          <input type=\"password\" class=\"form-control\" id=\"password2\" [(ngModel)]=\"password2\" [ngModelOptions]=\"{standalone: true}\"\r\n                            name=\"password2\" placeholder=\"password\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"addressLine1\">Dirección #1</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"addressLine1\" [(ngModel)]=\"addressLine1\" [ngModelOptions]=\"{standalone: true}\"\r\n                            name=\"addressLine1\" placeholder=\"Edif. La Risa Apto. 00\">\r\n                        </div>\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"addressLine2\">Direcciones #2</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"addressLine2\" [(ngModel)]=\"addressLine2\" [ngModelOptions]=\"{standalone: true}\"\r\n                            name=\"addressLine2\" placeholder=\"Calle 2, El Paraiso\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"city\">Ciudad</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"city\" [(ngModel)]=\"city\" [ngModelOptions]=\"{standalone: true}\" name=\"city\" placeholder=\"Caracas\">\r\n                        </div>\r\n                        <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                          <label for=\"nationalID\">Cédula</label>\r\n                          <input type=\"text\" class=\"form-control\" id=\"nationalID\" [(ngModel)]=\"nationalID\" [ngModelOptions]=\"{standalone: true}\" name=\"nationalID\"\r\n                            placeholder=\"1000\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"col-sm-12 col-lg-12 form-group\">\r\n                          <label for=\"rolAsignado\">Rol</label>\r\n                          <select class=\"form-control\" id=\"rolAsignado\" required (change)=\"onChange($event.target.value)\">\r\n                            <option *ngFor=\"let rol of roles\" [value]=\"rol.type\">{{rol.nombre}}</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div class=\"col-lg-12 col-sm-12 text-right\">\r\n                          <button class=\"btn btn-primary m-1\" (click)=\"registrarEmpleado()\" [disabled]=\"canModificateUser\">Registrar</button>\r\n                          <button class=\"btn btn-primary m-1\" (click)=\"modificarUser()\" [disabled]=\"!canModificateUser\">Modificar</button>\r\n                        </div>\r\n                      </div>\r\n                    </form>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ng-template>\r\n          </ngb-tab>\r\n          <ngb-tab title=\"Repuestos\">\r\n            <ng-template ngbTabContent>\r\n              <div class=\"row justify-content-around mt-2\">\r\n                <div class=\"col-sm-12 col-lg-12\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 mt-3 text-left\">\r\n                      <h5>Buscar repuestos:</h5>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-8 col-sm-12\">\r\n                      <form #formUpdate=\"ngForm\">\r\n                        <input class=\"form-control\" id=\"partNumberSearch\" type=\"text\" placeholder=\"Número de parte\" [(ngModel)]=\"partNumberSearch\"\r\n                          [ngModelOptions]=\"{standalone: true}\">\r\n                      </form>\r\n                    </div>\r\n                    <div class=\"col-lg-4 col-sm-12 text-center\">\r\n                      <button class=\"btn btn-primary m-1\" (click)=\"getRepuestosByPartNumber()\">Buscar</button>\r\n                      <button class=\"btn btn-primary m-1\" (click)=\"getRepuesto()\">Todos los repuestos</button>\r\n                    </div>\r\n                  </div>\r\n                  <br>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 mt-3 text-left\">\r\n                      <h4>Repuestos</h4>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-12 col-sm-12 text-center\">\r\n                      <table class=\"table table-hover table-responsive-md\" data-toggle=\"table\" data-pagination=\"true\">\r\n                        <thead class=\"thead-dark\">\r\n                          <tr>\r\n                            <th>Numero de parte</th>\r\n                            <th>Nombre</th>\r\n                            <th>Marca</th>\r\n                            <th>Modelo</th>\r\n                            <th>Disponibilidad</th>\r\n                          </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                          <tr *ngFor=\"let repuesto of repuestos\" (click)=\"repuestoSelec(repuesto)\">\r\n                            <td>{{repuesto.partNumber}}\r\n                            </td>\r\n                            <td>{{repuesto.name}}\r\n                            </td>\r\n                            <td>{{repuesto.brand}}\r\n                            </td>\r\n                            <td>{{repuesto.forModel}}\r\n                            </td>\r\n                            <td>{{repuesto.inStock}} Unidades</td>\r\n                          </tr>\r\n                        </tbody>\r\n                      </table>\r\n                    </div>\r\n                  </div>\r\n                  <br>\r\n                  <h4 class=\"text-left mt-2\">Añadir Repuesto/ Modificar Repuesto</h4>\r\n                  <form #formUpdate=\"ngForm\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"partNumber\">Numero de parte</label>\r\n                        <input class=\"form-control\" id=\"partNumber\" type=\"text\" placeholder=\"9933885522\" [(ngModel)]=\"partNumber\" [ngModelOptions]=\"{standalone: true}\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"partName\">Nombre</label>\r\n                        <input class=\"form-control\" id=\"partName\" type=\"text\" placeholder=\"Pastillas de freno\" [(ngModel)]=\"name\" [ngModelOptions]=\"{standalone: true}\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"partBrand\">Marca</label>\r\n                        <input class=\"form-control\" id=\"partBrand\" type=\"text\" placeholder=\"Toyota\" [(ngModel)]=\"brand\" [ngModelOptions]=\"{standalone: true}\">\r\n                      </div>\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"partModel\">Modelo</label>\r\n                        <input class=\"form-control\" id=\"partModel\" type=\"text\" placeholder=\"Camry\" [(ngModel)]=\"forModel\" [ngModelOptions]=\"{standalone: true}\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 col-lg-6 form-group\">\r\n                        <label for=\"partQuantity\">Cantidad</label>\r\n                        <input class=\"form-control\" id=\"partQuantity\" type=\"text\" placeholder=\"7\" [(ngModel)]=\"inStock\" [ngModelOptions]=\"{standalone: true}\">\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-sm-12 form-group text-right\">\r\n                        <button class=\"btn btn-primary m-1\" (click)=\"registrarRepuesto(content)\" [disabled]=\"canModificateRep\">Añadir</button>\r\n                        <button class=\"btn btn-primary m-1\" (click)=\"modificarRepuesto()\" [disabled]=\"!canModificateRep\">Modificar</button>\r\n                      </div>\r\n                \r\n                    </div>\r\n                  </form>\r\n                </div>\r\n              </div>\r\n            </ng-template>\r\n          </ngb-tab>\r\n        </ngb-tabset>\r\n      </div>\r\n    </div>\r\n  </div>\r\n<br>\r\n<br>\r\n<br>\r\n<br>>"
 
 /***/ }),
 
@@ -325,7 +325,7 @@ var AdministratorDashboardComponent = /** @class */ (function () {
         this.user = JSON.parse(localStorage.getItem('user'));
         this.getRepuesto();
         this.getUsuario();
-        this.correspond(this.user);
+        //this.correspond(this.user);
     };
     AdministratorDashboardComponent.prototype.correspond = function (user) {
         if (user.type != 4) {
@@ -598,7 +598,6 @@ var AdministratorDashboardComponent = /** @class */ (function () {
                     _this.brand = null;
                     _this.forModel = null;
                     _this.inStock = null;
-                    _this.flash.show('Repuesto', { cssClass: '', timeout: 3000 });
                 }
                 else {
                     _this.flash.show(dataReplacement.msg, { cssClass: 'custom-alert-danger', timeout: 3000 });
@@ -1646,7 +1645,6 @@ module.exports = "<section>\r\n  <section>\r\n    <div class=\"container\">\r\n 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_api_service__ = __webpack_require__("../../../../../src/app/services/api.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1660,25 +1658,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MechanicDashboardComponent = /** @class */ (function () {
-    function MechanicDashboardComponent(api, modal, flash, router) {
+    function MechanicDashboardComponent(api, modal, flash) {
         this.api = api;
         this.modal = modal;
         this.flash = flash;
-        this.router = router;
         this.ordenes = [];
         this.resp = [];
     }
     MechanicDashboardComponent.prototype.ngOnInit = function () {
         this.user = JSON.parse(localStorage.getItem('user'));
         this.getOrder(this.user);
-        this.correspond(this.user);
-    };
-    MechanicDashboardComponent.prototype.correspond = function (user) {
-        if (user.type !== 3) {
-            this.router.navigate(['/']);
-        }
     };
     MechanicDashboardComponent.prototype.getOrder = function (user) {
         var _this = this;
@@ -1806,8 +1796,7 @@ var MechanicDashboardComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_api_service__["a" /* ApiService */],
             __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* NgbModal */],
-            __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]])
     ], MechanicDashboardComponent);
     return MechanicDashboardComponent;
 }());
@@ -1937,7 +1926,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/recive-car/recive-car.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"container mt-4 mb-4\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <h2 class=\"text-center text-white mt-5\">Recepción de Vehículo</h2>\r\n    </div>\r\n  </div>\r\n</section>\r\n<div class=\"container\">\r\n  <div class=\"row justify-content-around\">\r\n    <div class=\"col-lg-10 fondoBlanco\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 col-sm-12\">\r\n          <h4>Escaner Código QR:</h4>\r\n        </div>\r\n        <div class=\"col-lg-6 col-sm-12 text-right\">\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"tomarFoto()\">Escanear</button>\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"verificarQR()\">Verificar</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-2\">\r\n        <div class=\"col-sm-12 col-lg-6 text-center\">\r\n          <video class=\"booth\" #video [width]=\"width\" [height]=\"height\" autoplay></video>\r\n        </div>\r\n        <div class=\"col-sm-12 col-lg-6 text-center\">\r\n          <canvas #canvas [width]=\"width\" [height]=\"height\"></canvas>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container\" *ngIf=\"mostrar\">\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12\">\r\n    <h2 class=\"text-center text-white mt-5\">Datos de la Orden de Reparación</h2>\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"row justify-content-around\">\r\n    <div class=\"col-lg-10 fondoBlanco\">\r\n      <div class=\"row form-group pl-2\">\r\n        <div class=\"col-lg-4\">\r\n          <div class=\"row \">\r\n            <label for=\"mechanicName\"><strong>Mecánico:</strong></label>\r\n          </div>\r\n          <div class=\"row\">\r\n            <input type=\"text\" id=\"mechanicName\" name=\"mechanicName\" readonly class=\"form-control-plaintext\" value=\"{{rodata.mechanicName}}\">\r\n          </div>\r\n        </div>\r\n        <div class=\"col-lg-4 \">\r\n          <div class=\"row\">\r\n            <label for=\"carName\"><strong>Datos de Carro:</strong></label>\r\n          </div>\r\n          <div class=\"row\">\r\n            <input type=\"text\" id=\"carName\" name=\"carName\" readonly class=\"form-control-plaintext\" value=\"{{rodata.carName}}\">\r\n          </div>\r\n        </div>\r\n        <div class=\"col-lg-4 \">\r\n          <div class=\"row\">\r\n            <label for=\"licensePlate\"><strong>Placa:</strong></label>\r\n          </div>\r\n          <div class=\"row\">\r\n            <input type=\"text\" id=\"licensePlate\" name=\"licensePlate\" readonly class=\"form-control-plaintext\" value=\"{{rodata.licensePlate}}\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <h4 class=\"center-text\">Recepción del Vehículo</h4>\r\n        </div>\r\n      </div>\r\n      <form class=\"row\" #formDetails=\"ngForm\" (submit)=\"aceptarVehiculo()\">\r\n        <div class=\"col-sm-12\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-lg-12 form-group\">\r\n                    <label for=\"diagnostic\">Diagnosctico: </label>\r\n                    <textarea class=\"form-control\" rows=\"2\" name=\"diagnostic\" [(ngModel)]=\"diagnostic\" [ngModelOptions]=\"{standalone: true}\"></textarea>      \r\n                  </div>\r\n            </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"front\">Detalles Parte Frontal: </label>\r\n              <textarea class=\"form-control\" id=\"front\" rows=\"2\" name=\"front\" [(ngModel)]=\"front\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"back\">Detalles Parte Posterior: </label>\r\n              <textarea class=\"form-control\" id=\"back\" rows=\"2\" name=\"back\" [(ngModel)]=\"back\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"right\">Detalles Parte Lat. Derecho: </label>\r\n              <textarea class=\"form-control\" id=\"right\" rows=\"2\" name=\"right\" [(ngModel)]=\"right\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"left\">Detalles Parte Lat. Izquierdo: </label>\r\n              <textarea class=\"form-control\" id=\"left\" rows=\"2\" name=\"lefy\" [(ngModel)]=\"left\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n            <label for=\"fotoVehiculo\">Foto del Vehiculo</label>\r\n            <div class=\"custom-file\" id=\"fotoVehiculo\">\r\n              <input type=\"file\" class=\"custom-file-input\" id=\"photo\" [(ngModel)]=\"photo\" accept=\".png, .jpg, .jpeg\" name=\"photo\" (change)=\"onChange($event)\">\r\n              <label class=\"custom-file-label\" for=\"photo\">Mi Vehiculo</label>\r\n            </div>\r\n          </div>\r\n          </div>\r\n          <div class=\"row mt-3 text-right\">\r\n            <div class=\"col-sm-12 form-group\">\r\n              <button class=\"btn btn-primary\" type=\"submit\">Aceptar</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n</div>"
+module.exports = "<section class=\"container mt-4 mb-4\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <h2 class=\"text-center text-white mt-5\">Recepción de Vehículo</h2>\r\n    </div>\r\n  </div>\r\n</section>\r\n<div class=\"container\">\r\n  <div class=\"row justify-content-around\">\r\n    <div class=\"col-lg-10 fondoBlanco\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 col-sm-12\">\r\n          <h4>Escaner Código QR:</h4>\r\n        </div>\r\n        <div class=\"col-lg-6 col-sm-12 text-right\">\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"tomarFoto()\">Escanear</button>\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"verificarQR()\">Verificar</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-2\">\r\n        <div class=\"col-sm-12 col-lg-6 text-center\">\r\n          <video class=\"booth\" #video [width]=\"width\" [height]=\"height\" autoplay></video>\r\n        </div>\r\n        <div class=\"col-sm-12 col-lg-6 text-center\">\r\n          <canvas #canvas [width]=\"width\" [height]=\"height\"></canvas>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<!--*ngIf=\"mostrar\"-->\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12\">\r\n    <h2 class=\"text-center text-white mt-5\">Datos de la Orden de Reparación</h2>\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"row justify-content-around\">\r\n    <div class=\"col-lg-10 fondoBlanco\">\r\n      <div class=\"row form-group pl-2\">\r\n        <div class=\"col-lg-4\">\r\n          <div class=\"row \">\r\n            <label for=\"mechanicName\"><strong>Mecánico:</strong></label>\r\n          </div>\r\n          <div class=\"row\">\r\n            <input type=\"text\" id=\"mechanicName\" name=\"mechanicName\" readonly class=\"form-control-plaintext\" value=\"{{rodata.mechanicName}}\">\r\n          </div>\r\n        </div>\r\n        <div class=\"col-lg-4 \">\r\n          <div class=\"row\">\r\n            <label for=\"carName\"><strong>Datos de Carro:</strong></label>\r\n          </div>\r\n          <div class=\"row\">\r\n            <input type=\"text\" id=\"carName\" name=\"carName\" readonly class=\"form-control-plaintext\" value=\"{{rodata.carName}}\">\r\n          </div>\r\n        </div>\r\n        <div class=\"col-lg-4 \">\r\n          <div class=\"row\">\r\n            <label for=\"licensePlate\"><strong>Placa:</strong></label>\r\n          </div>\r\n          <div class=\"row\">\r\n            <input type=\"text\" id=\"licensePlate\" name=\"licensePlate\" readonly class=\"form-control-plaintext\" value=\"{{rodata.licensePlate}}\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <h4 class=\"center-text\">Recepción del Vehículo</h4>\r\n        </div>\r\n      </div>\r\n      <form class=\"row\" #formDetails=\"ngForm\" (submit)=\"aceptarVehiculo()\">\r\n        <div class=\"col-sm-12\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-lg-12 form-group\">\r\n                    <label for=\"diagnostic\">Diagnosctico: </label>\r\n                    <textarea class=\"form-control\" rows=\"2\" name=\"diagnostic\" [(ngModel)]=\"diagnostic\" [ngModelOptions]=\"{standalone: true}\"></textarea>      \r\n                  </div>\r\n            </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"front\">Detalles Parte Frontal: </label>\r\n              <textarea class=\"form-control\" id=\"front\" rows=\"2\" name=\"front\" [(ngModel)]=\"front\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"back\">Detalles Parte Posterior: </label>\r\n              <textarea class=\"form-control\" id=\"back\" rows=\"2\" name=\"back\" [(ngModel)]=\"back\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"right\">Detalles Parte Lat. Derecho: </label>\r\n              <textarea class=\"form-control\" id=\"right\" rows=\"2\" name=\"right\" [(ngModel)]=\"right\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n            <div class=\"col-sm-12 col-lg-6 form-group\">\r\n              <label for=\"left\">Detalles Parte Lat. Izquierdo: </label>\r\n              <textarea class=\"form-control\" id=\"left\" rows=\"2\" name=\"lefT\" [(ngModel)]=\"left\" [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n            <label for=\"fotoVehiculo\">Foto del Vehiculo</label>\r\n            <div class=\"custom-file\" id=\"fotoVehiculo\">\r\n              <input type=\"file\" class=\"custom-file-input\" id=\"photo\" [(ngModel)]=\"photo\" accept=\".png, .jpg, .jpeg\" name=\"photo\" (change)=\"onChange($event)\">\r\n              <label class=\"custom-file-label\" for=\"photo\">Mi Vehiculo</label>\r\n            </div>\r\n          </div>\r\n          </div>\r\n          <div class=\"row mt-3 text-right\">\r\n            <div class=\"col-sm-12 form-group\">\r\n              <button class=\"btn btn-primary\" type=\"submit\">Aceptar</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n</div>"
 
 /***/ }),
 
@@ -2019,28 +2008,33 @@ var ReciveCarComponent = /** @class */ (function () {
     };
     ReciveCarComponent.prototype.aceptarVehiculo = function () {
         var _this = this;
-        var detalles = "Detalles parete delantera: " + this.front + "\n      Detalles parte trasera: " + this.back + "\n      Detalles parte Lat. Derecha: " + this.right + "\n      Detalles parte Lat. Izquiera: " + this.left + "\n    ";
-        var details = {
-            repairOrderID: this.rodata.ID,
-            details: detalles,
-            photo: this.photoLink,
-            diagnostic: this.diagnostic
-        };
-        this.api.recibirVehiculo(details).subscribe(function (data) {
-            if (data.sucess) {
-                _this.flash.show(data.msg, { cssClass: 'custom-alert-success', timeout: 3000 });
-                _this.front = '';
-                _this.back = '';
-                _this.right = '';
-                _this.right = '';
-                _this.photoLink = '';
-                _this.diagnostic = '';
-                _this.router.navigate(['/manager']);
-            }
-            else {
-                _this.flash.show(data.msg, { cssClass: 'custom-alert-danger', timeout: 3000 });
-            }
-        });
+        if (this.diagnostic && this.front && this.back && this.left && this.right) {
+            var detalles = "Detalles parete delantera: " + this.front + "\n      Detalles parte trasera: " + this.back + "\n      Detalles parte Lat. Derecha: " + this.right + "\n      Detalles parte Lat. Izquiera: " + this.left + "\n    ";
+            var details = {
+                repairOrderID: this.rodata.ID,
+                details: detalles,
+                photo: this.photoLink,
+                diagnostic: this.diagnostic
+            };
+            this.api.recibirVehiculo(details).subscribe(function (data) {
+                if (data.sucess) {
+                    _this.flash.show(data.msg, { cssClass: 'custom-alert-success', timeout: 3000 });
+                    _this.front = '';
+                    _this.back = '';
+                    _this.right = '';
+                    _this.right = '';
+                    _this.photoLink = '';
+                    _this.diagnostic = '';
+                    _this.router.navigate(['/manager']);
+                }
+                else {
+                    _this.flash.show(data.msg, { cssClass: 'custom-alert-danger', timeout: 3000 });
+                }
+            });
+        }
+        else {
+            this.flash.show('Disculpe, recuerde completar todos los campos correctamente. No deje campos en blanco ni exceda el limite de caracteres.', { cssClass: 'custom-alert-danger', timeout: 3000 });
+        }
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('video'),
@@ -2220,235 +2214,235 @@ var ApiService = /** @class */ (function () {
     ApiService.prototype.getUsuariosWorkers = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('User/get-workers', { headers: headers })
+        return this.http.get('https://workchangwork.herokuapp.com/User/get-workers', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getUsuariosByID = function (search, type) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
         if (type == 'ID') {
-            return this.http.post('User/searchUsersByID', search, { headers: headers })
+            return this.http.post('https://workchangwork.herokuapp.com/User/searchUsersByID', search, { headers: headers })
                 .map(function (res) { return res.json(); });
         }
         else if (type == 'nationalID') {
-            return this.http.post('User/searchUsersByNationalID', search, { headers: headers })
+            return this.http.post('https://workchangwork.herokuapp.com/User/searchUsersByNationalID', search, { headers: headers })
                 .map(function (res) { return res.json(); });
         }
         else if (type == 'name') {
-            return this.http.post('User/searchUsersByName', search, { headers: headers })
+            return this.http.post('https://workchangwork.herokuapp.com/User/searchUsersByName', search, { headers: headers })
                 .map(function (res) { return res.json(); });
         }
         else if (type == 'username') {
-            return this.http.post('User/searchUsersByUsername', search, { headers: headers })
+            return this.http.post('https://workchangwork.herokuapp.com/User/searchUsersByUsername', search, { headers: headers })
                 .map(function (res) { return res.json(); });
         }
         else if (type == 'email') {
-            return this.http.post('User/searchUsersByEmail', search, { headers: headers })
+            return this.http.post('https://workchangwork.herokuapp.com/User/searchUsersByEmail', search, { headers: headers })
                 .map(function (res) { return res.json(); });
         }
     };
     ApiService.prototype.getUsuariosByNationalID = function (userID) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('User/searchUsersByID', userID, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/User/searchUsersByID', userID, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.modificarDatosUsuario = function (usuario) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('User/modify-User', usuario, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/User/modify-User', usuario, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.buscarCliente = function (userID) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('User/searchClient', userID, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/User/searchClient', userID, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.registrarCarro = function (car) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Client/CarRegister', car, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Client/CarRegister', car, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.pedirCita = function (cita) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Client/askAppoiment', cita, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Client/askAppoiment', cita, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.buscarCarros = function (OwnerID) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Client/Cars', OwnerID, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Client/Cars', OwnerID, { headers: headers })
             .map(function (res) { return res.json().cars.filter(function (car) { return car.active == 1; }); });
     };
     ApiService.prototype.buscarClientePorCedula = function (cedula) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Client/search-nationalID', cedula, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Client/search-nationalID', cedula, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.modificarDatosCliente = function (cliente) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Client/modify', cliente, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Client/modify', cliente, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getCitasActivas = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('Manager/appointments', { headers: headers })
+        return this.http.get('https://workchangwork.herokuapp.com/Manager/appointments', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getOrdenesAbiertas = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('Manager/actives-orders', { headers: headers })
+        return this.http.get('https://workchangwork.herokuapp.com/Manager/actives-orders', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.buscarMecanico = function (userID) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('User/searchMechanic', userID, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/User/searchMechanic', userID, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.registrarRepuesto = function (replacement) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Admin/new-Replacement', replacement, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Admin/new-Replacement', replacement, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getRepuestos = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('Admin/replacements', { headers: headers })
+        return this.http.get('https://workchangwork.herokuapp.com/Admin/replacements', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getRepuestosByPartNumber = function (partNumber) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Admin/searchByPartNumber', partNumber, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Admin/searchByPartNumber', partNumber, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.modificarRepuesto = function (replacement) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Admin/modify-Replacement', replacement, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Admin/modify-Replacement', replacement, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getMecanicosDisponibles = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('Manager/available-mechanics', { headers: headers })
+        return this.http.get('https://workchangwork.herokuapp.com/Manager/available-mechanics', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.nuevaOrdenReparacion = function (orden) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Manager/create-RepairOrder', orden, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Manager/create-RepairOrder', orden, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getOrdenes = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Mechanic/repair-orders', user, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Mechanic/repair-orders', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.desactivarVehiculo = function (serial) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Client/desactive-cars', serial, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Client/desactive-cars', serial, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getCitasPedidas = function (userID) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("Client/all-appoiments/" + userID, { headers: headers })
+        return this.http.get("https://workchangwork.herokuapp.com/Client/all-appoiments/" + userID, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.verDetallesReparacion = function (ids) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Manager/order-details', ids, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Manager/order-details', ids, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.recibirVehiculo = function (detalles) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Manager/receive-car', detalles, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Manager/receive-car', detalles, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.contactEmail = function (email) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Email/contact', email, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Email/contact', email, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getRepuestoModelos = function (model) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("Mechanic/replacements/" + model, { headers: headers })
+        return this.http.get("https://workchangwork.herokuapp.com/Mechanic/replacements/" + model, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.actualizarOrden = function (datos) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Mechanic/change-order', datos, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Mechanic/change-order', datos, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.cerrarOrdenMecanico = function (id) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('Mechanic/close-order', id, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/Mechanic/close-order', id, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getOrdenByID = function (id) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("Mechanic/order/" + id, { headers: headers })
+        return this.http.get("https://workchangwork.herokuapp.com/Mechanic/order/" + id, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.cerrarOrden = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post("Manager/close-order", data, { headers: headers })
+        return this.http.post("https://workchangwork.herokuapp.com/Manager/close-order", data, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.historicoCliente = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post("Reports/clientHistorical", data, { headers: headers })
+        return this.http.post("https://workchangwork.herokuapp.com/Reports/clientHistorical", data, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.historicoVehiculo = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post("Reports/carHistorical", data, { headers: headers })
+        return this.http.post("https://workchangwork.herokuapp.com/Reports/carHistorical", data, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.historicoMecanico = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post("Reports/mechanicHistorical", data, { headers: headers })
+        return this.http.post("https://workchangwork.herokuapp.com/Reports/mechanicHistorical", data, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.historicoModelo = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post("Reports/modelHistorical", data, { headers: headers })
+        return this.http.post("https://workchangwork.herokuapp.com/Reports/modelHistorical", data, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getCarBySerial = function (serial) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("Mechanic/car/" + serial, { headers: headers })
+        return this.http.get("https://workchangwork.herokuapp.com/Mechanic/car/" + serial, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getEmpleadoByApellido = function (apellido) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("Manager/empleado/" + apellido, { headers: headers })
+        return this.http.get("https://workchangwork.herokuapp.com/Manager/empleado/" + apellido, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ApiService = __decorate([
@@ -2492,13 +2486,13 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('User/register', user, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/User/register', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.login = function (credentials) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('User/auth', credentials, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/User/auth', credentials, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -2612,7 +2606,7 @@ var QrcodeService = /** @class */ (function () {
     QrcodeService.prototype.guardarQR = function (qr) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('qr', { qr: qr }, { headers: headers })
+        return this.http.post('https://workchangwork.herokuapp.com/qr', { qr: qr }, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     QrcodeService = __decorate([
